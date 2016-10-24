@@ -1,0 +1,17 @@
+[Unit]
+Description=discourse sidekiq service
+After=multi-user.target
+
+[Service]
+WorkingDirectory=/path/to/rails/app
+Environment=RAILS_ENV=production
+ExecStart=/path/to/rvm/.rvm/bin/systemd_bundle exec sidekiq -C config/sidekiq.yml
+# If you have a deployment user un-comment the lines below
+# User=deploy
+# Group=deploy
+# UMask=0002
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
