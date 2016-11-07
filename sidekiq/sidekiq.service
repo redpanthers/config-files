@@ -6,10 +6,12 @@ After=multi-user.target
 WorkingDirectory=/path/to/rails/app
 Environment=RAILS_ENV=production
 ExecStart=/path/to/rvm/.rvm/bin/systemd_bundle exec sidekiq -C config/sidekiq.yml
-# If you have a deployment user un-comment the lines below
-# User=deploy
-# Group=deploy
-# UMask=0002
+# You need to set your deployment user or your regular user
+# if not sidekiq will be run as a root. Which could cause unexpected
+# problems.
+User=deploy
+Group=deploy
+UMask=0002
 Restart=always
 RestartSec=10
 
