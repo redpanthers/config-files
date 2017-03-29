@@ -14,7 +14,6 @@ Style/AndOr:
   Enabled: false
 
 AllCops:
-  RunRailsCops: true
   Exclude:
     - config/initializers/*.rb
     - 'vendor/**/*'
@@ -26,3 +25,7 @@ AllCops:
     - test/test_helper.rb
     - Guardfile
     - config/application.rb
+    - db/schema.rb
+
+Rails:
+  Enabled: true
